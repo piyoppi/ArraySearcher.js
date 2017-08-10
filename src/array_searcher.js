@@ -1,17 +1,17 @@
 
 export default class arraySearcher{
-    constructor(){
+    constructor(maxHashLength = 1){
         this._index = {};
         this._arr = {};
         this._relation = null;
-        this.maxHashLength = 3;
+        this.maxHashLength = maxHashLength;
     }
 
     setArray(arr){
         this._relation = null;
         this._index = {};
         this._arr = arr;
-        this.makeHash();
+        this._makeHash();
     }
 
     setHash(objArray, valueKeys){
@@ -23,10 +23,10 @@ export default class arraySearcher{
             this._relation[value] = { item: item, value: value };
             this._arr.push(value);
         });
-        this.makeHash();
+        this._makeHash();
     }
 
-    makeHash(){
+    _makeHash(){
         this._arr.forEach( item => {
             for( var i=1; i<=this.maxHashLength; i++){
                 let hashstr = item.substr(0, i);
@@ -43,6 +43,7 @@ export default class arraySearcher{
     }
 
     _getObj(arrItems){
+        if( !arrItems ) return [];
         if( this._relation ){
             return arrItems.map( arrItem => this._relation[arrItem] );
         }
@@ -58,6 +59,7 @@ export default class arraySearcher{
         else{
             let keywordHash = keyword.substr(0, this.maxHashLength);
             let objs = this._getObj(this._index[keywordHash]);
+
             let results = [];
             objs.forEach( obj => {
                 let val = (typeof obj !== "string") ? obj.value : obj;

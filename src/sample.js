@@ -19,3 +19,5 @@ var searcher2 = new arraySearcher();
 searcher2.setHash(arr2, ["hoge", "fuga", "piyo"]);
 
 console.log(searcher2.search("pic2"));
+console.log(searcher2.search("pic2fe"));
+console.log(searcher2.search("ic2fe"));
