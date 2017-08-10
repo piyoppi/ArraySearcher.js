@@ -39,7 +39,6 @@ export default class arraySearcher{
                 }
             }
         });
-        console.log(this._index);
     }
 
     _getObj(arrItems){
@@ -53,19 +52,19 @@ export default class arraySearcher{
     }
 
     search(keyword){
+        let results = [];
         if( keyword.length <= this.maxHashLength ){
-            return this._getObj(this._index[keyword]);
+            results = this._getObj(this._index[keyword]);
         }
         else{
             let keywordHash = keyword.substr(0, this.maxHashLength);
             let objs = this._getObj(this._index[keywordHash]);
 
-            let results = [];
             objs.forEach( obj => {
                 let val = (typeof obj !== "string") ? obj.value : obj;
                 if( val.includes(keyword) ) results.push(obj)
             } );
-            return results.map( obj => obj.item );
         }
+        return this._relation ? results.map( obj => obj.item ) : results;
     }
 }

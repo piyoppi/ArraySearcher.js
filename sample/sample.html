@@ -6,6 +6,20 @@
     </head>
     <body>
         <script src="https://unpkg.com/vue"></script>
+        <div id="app">
+            <input type="text" v-model="query" v-on:keyup="find"></input>
+            <ul>
+                <li v-for="keyword in findResults">
+                    {{ keyword.hoge.fuga.piyo }}
+                </li>
+            </ul>
+            <ul>
+                <li v-for="item in listData">
+                    {{ item.hoge.fuga.piyo }}
+                </li>
+            </ul>
+        </div>
+
         <script src="../dist/js/sample.bundle.js"></script>
     </body>
 </html>
