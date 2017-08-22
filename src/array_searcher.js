@@ -16,6 +16,7 @@ export default class arraySearcher{
 
     setHash(objArray, valueKeys){
         this._relation = {};
+        this._index = {};
         this._arr = [];
         objArray.forEach( item => {
             let value = item;
