@@ -1,9 +1,5 @@
 import arraySearcher from './array_searcher.js'
 
-//var arr = ["hoge", "fuga", "piyo", "from", "pico", "pica"];
-//var searcher = new arraySearcher();
-//searcher.setArray(arr);
-
 var searcher = new arraySearcher();
 
 window.onload = function(){
@@ -13,21 +9,20 @@ window.onload = function(){
         data: function(){
             return {
                 listData: [
-                    {hoge: { fuga: { piyo : "hoge" } } },
-                    {hoge: { fuga: { piyo : "fuga" } } },
-                    {hoge: { fuga: { piyo : "piyo" } } },
-                    {hoge: { fuga: { piyo : "from" } } },
-                    {hoge: { fuga: { piyo : "pico" } } },
-                    {hoge: { fuga: { piyo : "pica" } } },
-                    {hoge: { fuga: { piyo : "pic2" } } },
-                    {hoge: { fuga: { piyo : "pic223" } } },
+                    {data: { name: "ひよこ" } },
+                    {data: { name: "ひよこまめ" } },
+                    {data: { name: "あひる" } },
+                    {data: { name: "piyo" } },
+                    {data: { name: "pico" } },
+                    {data: { name: "pica" } },
+                    {data: { name: "pick" } },
                 ],
                 findResults: [],
                 query: "",
             }
         },
         created: function(){
-            searcher.setHash(this.listData, ["hoge", "fuga", "piyo"]);
+            searcher.setHash(this.listData, ["data", "name"]);
         },
         methods:{
             find: function(){
